@@ -12,9 +12,9 @@ export const EnergySection = () => {
       <h2 className="text-5xl font-montserrat font-black uppercase mb-8 text-center">
         {t('energy.title')}
       </h2>
-      <div className="relative flex min-h-[40vh] w-full items-center justify-center">
+      <div className="relative flex min-h-[40vh] w-full items-center justify-center mx-0 py-0 px-0">
         <div className="w-[80vw] max-w-4xl flex flex-wrap justify-center gap-4">
-          <p className="font-montserrat uppercase text-center text-base font-normal">
+          <p className="font-montserrat uppercase text-center text-base font-extralight">
             {t('energy.text')}
           </p>
         </div>

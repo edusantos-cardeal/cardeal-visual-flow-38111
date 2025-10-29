@@ -2,12 +2,10 @@ import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
 import { useLanguage } from '@/contexts/LanguageContext';
-
 export const Sidebar = () => {
   const {
     t
   } = useLanguage();
-  
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videos = ['https://cardeal.tv/wp-content/uploads/2025/08/Style_static_blackandwhite_202508121452_0x.mp4', 'https://cardeal.tv/wp-content/uploads/2025/08/video1.gif', 'https://cardeal.tv/wp-content/uploads/2025/08/video2.gif'];
@@ -59,7 +57,7 @@ export const Sidebar = () => {
       borderRight: `1px solid hsl(var(--border))`
     }}>
         {/* Menu e dot centralizados */}
-        <div className="flex-1 flex flex-col items-center justify-center gap-1 mx-0 px-0 py-0">
+        <div className="flex-1 flex flex-col items-center justify-center gap-1 mx-0 py-[4px] px-[5px]">
           <nav className="flex flex-col gap-1 items-center mx-[9px] py-0">
             {sections.map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[15px] text-base px-[4px] py-[3px]`}>
                 {section.label}
