@@ -5,7 +5,7 @@ import { Button } from '../ui/button';
 export const VideosSection = () => {
   const [isInView, setIsInView] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -19,18 +19,18 @@ export const VideosSection = () => {
       threshold: [0, 0.1, 0.2, 0.5, 1]
     });
     
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
     }
     
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (imageRef.current) {
+        observer.unobserve(imageRef.current);
       }
     };
   }, []);
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center py-12 px-4 md:px-8">
+    <section className="relative min-h-screen flex items-center py-12 px-4 md:px-8">
       <div className="max-w-7xl grid grid-cols-1 md:grid-cols-[30%_70%] gap-12 items-center w-full mx-auto">
         {/* Coluna 1 - Texto */}
         <div className="space-y-6">
@@ -53,7 +53,7 @@ export const VideosSection = () => {
         {/* Coluna 2 - Imagem (70% da área) */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <div className="cursor-pointer transition-transform duration-300 hover:scale-105">
+            <div ref={imageRef} className="cursor-pointer transition-transform duration-300 hover:scale-105">
               <img 
                 src={isInView 
                   ? "https://cardeal.tv/wp-content/uploads/2025/07/tela2-3.png" 
