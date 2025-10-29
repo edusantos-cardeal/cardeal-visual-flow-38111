@@ -55,13 +55,13 @@ export const Sidebar = () => {
       </div>
 
       {/* Sidebar */}
-      <div className={`hidden md:flex fixed left-0 top-0 h-full w-16 flex-col items-center py-32 z-[99] transition-none ${isOnWhite ? 'bg-white/80' : 'bg-background/80'} backdrop-blur-sm`} style={{
+      <div className={`hidden md:flex fixed left-0 top-0 h-full w-16 flex-col items-center py-32 z-[99] ${isOnWhite ? 'bg-white/80' : 'bg-background/80'} backdrop-blur-sm`} style={{
       borderRight: `1px solid ${isOnWhite ? '#000' : 'hsl(var(--border))'}`
     }}>
         {/* Menu e dot centralizados */}
         <div className="flex-1 flex flex-col items-center justify-center gap-1 mx-0 px-0 py-0">
           <nav className="flex flex-col gap-1 items-center mx-[9px] py-0">
-            {sections.map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`transition-none ${isOnWhite ? 'text-black' : 'text-foreground'} hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[15px] text-base px-[4px] py-[3px]`}>
+            {sections.map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`${isOnWhite ? 'text-black' : 'text-foreground'} hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[15px] text-base px-[4px] py-[3px]`}>
                 {section.label}
               </button>)}
           </nav>
@@ -79,7 +79,7 @@ export const Sidebar = () => {
         </div>
 
         {/* Botão de contato fixo no bottom */}
-        <button onClick={() => scrollToSection('contact')} className={`w-full transition-none ${isOnWhite ? 'bg-black text-white' : 'bg-foreground text-background'} hover:opacity-90 -rotate-90 whitespace-nowrap py-3 px-2 text-[10px] font-bold tracking-wider origin-center`}>
+        <button onClick={() => scrollToSection('contact')} className={`w-full ${isOnWhite ? 'bg-black text-white' : 'bg-foreground text-background'} hover:opacity-90 -rotate-90 whitespace-nowrap py-4 px-6 text-[10px] font-bold tracking-wider origin-center`}>
           {t('menu.contact.button')}
         </button>
       </div>

@@ -31,10 +31,9 @@ export const BrandsSection = () => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
-      const leftEyeCenterX = rect.left + rect.width * 0.29;
-      const rightEyeCenterX = rect.left + rect.width * 0.64;
+      const leftEyeCenterX = rect.left + rect.width * 0.26;
+      const rightEyeCenterX = rect.left + rect.width * 0.67;
       const eyeCenterY = rect.top + rect.height * 0.43;
-      
       const calculatePosition = (centerX: number) => {
         const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - centerX);
         const distance = Math.min(Math.sqrt(Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - eyeCenterY, 2)) / 10, 15);
@@ -107,7 +106,7 @@ export const BrandsSection = () => {
                   width: '9%',
                   aspectRatio: '1/1',
                   top: `${leftIrisPosition.y}%`,
-                  left: `${28 + (leftIrisPosition.x - 50) * 0.15}%`,
+                  left: `${25 + (leftIrisPosition.x - 50) * 0.15}%`,
                   zIndex: 2,
                   pointerEvents: 'none',
                   transform: 'translate(-50%, -50%)'
@@ -121,7 +120,7 @@ export const BrandsSection = () => {
                   width: '9%',
                   aspectRatio: '1/1',
                   top: `${rightIrisPosition.y}%`,
-                  left: `${63 + (rightIrisPosition.x - 50) * 0.15}%`,
+                  left: `${66 + (rightIrisPosition.x - 50) * 0.15}%`,
                   zIndex: 2,
                   pointerEvents: 'none',
                   transform: 'translate(-50%, -50%)'

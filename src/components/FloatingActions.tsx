@@ -14,19 +14,19 @@ export const FloatingActions = () => {
         href="https://instagram.com/cardeal.tv"
         target="_blank"
         rel="noopener noreferrer"
-        className={`w-12 h-12 rounded-full border flex items-center justify-center hover:bg-primary group transition-none ${isOnWhite ? 'bg-white border-black' : 'bg-background border-border'}`}
+        className={`w-12 h-12 rounded-full border flex items-center justify-center hover:bg-primary group ${isOnWhite ? 'bg-white border-black' : 'bg-background border-border'}`}
       >
-        <Instagram className={`w-5 h-5 group-hover:text-white transition-none ${isOnWhite ? 'text-black' : 'text-foreground'}`} />
+        <Instagram className={`w-5 h-5 group-hover:text-white ${isOnWhite ? 'text-black' : 'text-foreground'}`} />
       </a>
       
       <a
         href="https://vimeo.com/theoriass"
         target="_blank"
         rel="noopener noreferrer"
-        className={`w-12 h-12 rounded-full border flex items-center justify-center hover:bg-primary group transition-none ${isOnWhite ? 'bg-white border-black' : 'bg-background border-border'}`}
+        className={`w-12 h-12 rounded-full border flex items-center justify-center hover:bg-primary group ${isOnWhite ? 'bg-white border-black' : 'bg-background border-border'}`}
       >
         <svg 
-          className={`w-5 h-5 group-hover:text-white transition-none ${isOnWhite ? 'text-black' : 'text-foreground'}`}
+          className={`w-5 h-5 group-hover:text-white ${isOnWhite ? 'text-black' : 'text-foreground'}`}
           viewBox="0 0 24 24" 
           fill="currentColor"
         >
@@ -38,9 +38,9 @@ export const FloatingActions = () => {
         href="https://www.linkedin.com/company/cardeal-tv/"
         target="_blank"
         rel="noopener noreferrer"
-        className={`w-12 h-12 rounded-full border flex items-center justify-center hover:bg-primary group transition-none ${isOnWhite ? 'bg-white border-black' : 'bg-background border-border'}`}
+        className={`w-12 h-12 rounded-full border flex items-center justify-center hover:bg-primary group ${isOnWhite ? 'bg-white border-black' : 'bg-background border-border'}`}
       >
-        <Linkedin className={`w-5 h-5 group-hover:text-white transition-none ${isOnWhite ? 'text-black' : 'text-foreground'}`} />
+        <Linkedin className={`w-5 h-5 group-hover:text-white ${isOnWhite ? 'text-black' : 'text-foreground'}`} />
       </a>
 
       <Button 

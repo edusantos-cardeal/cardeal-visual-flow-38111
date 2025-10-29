@@ -31,7 +31,7 @@ export const VideosSection = () => {
   }, []);
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center py-12 px-4 md:px-8">
-      <div className="max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full mx-0 px-0">
+      <div className="max-w-7xl grid grid-cols-1 md:grid-cols-[30%_70%] gap-12 items-center w-full mx-auto">
         {/* Coluna 1 - Texto */}
         <div className="space-y-6">
           <h2 className="text-3xl md:text-5xl font-montserrat font-black uppercase">
@@ -50,7 +50,7 @@ export const VideosSection = () => {
           </Button>
         </div>
 
-        {/* Coluna 2 - Imagem */}
+        {/* Coluna 2 - Imagem (70% da área) */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <div className="cursor-pointer transition-transform duration-300 hover:scale-105">

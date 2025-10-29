@@ -6,7 +6,7 @@ export const useColorOnWhiteBackground = () => {
   useEffect(() => {
     const checkBackground = () => {
       // IDs das seções com fundo branco
-      const whiteSections = ['about', 'services', 'gallery', 'brands', 'contact'];
+      const whiteSections = ['about', 'services', 'brands', 'contact'];
       
       let onWhite = false;
       for (const sectionId of whiteSections) {
