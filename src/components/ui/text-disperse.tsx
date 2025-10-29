@@ -43,14 +43,15 @@ export function TextDisperse({
   const splitWord = (word: string) => {
     let chars: JSX.Element[] = [];
     word.split('').forEach((char, i) => {
+      const transformIndex = i % transforms.length;
       chars.push(
         <motion.span
           custom={i}
           variants={{
             open: (i: number) => ({
-              x: transforms[i].x + 'em',
-              y: transforms[i].y + 'em',
-              rotateZ: transforms[i].rotationZ,
+              x: transforms[transformIndex].x + 'em',
+              y: transforms[transformIndex].y + 'em',
+              rotateZ: transforms[transformIndex].rotationZ,
               transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1] },
               zIndex: 1,
             }),
