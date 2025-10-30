@@ -40,7 +40,7 @@ const Index = () => {
             </div>
             <GallerySection />
             <VideosSection />
-            <EnergySection />
+            <EnergySection className="py-0" />
             <BrandsSection className="py-[41px]" />
             <ContactSection />
             <FAQSection />
