@@ -42,118 +42,121 @@ export const BrandsSection = () => {
           y: 50 + Math.sin(angle) * distance * 0.5
         };
       };
-      
       setLeftIrisPosition(calculatePosition(leftEyeCenterX));
       setRightIrisPosition(calculatePosition(rightEyeCenterX));
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-  const brands = [
-    { id: 'samsung-1', name: 'Samsung', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/samsung-1.png' },
-    { id: 'mercadolivre', name: 'Mercado Livre', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/mercadolivre-1.png' },
-    { id: 'itau', name: 'Itaú', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/itau-1.png' },
-    { id: 'ipiranga', name: 'Ipiranga', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/ipiranga-1.png' },
-    { id: 'fanta', name: 'Fanta', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/fanta-1.png' },
-    { id: 'booking', name: 'Booking', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/booking-1.png' },
-    { id: 'bk', name: 'Burger King', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/bk-1.png' },
-    { id: 'samsung-2', name: 'Samsung', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/samsung-1.png' },
-    { id: 'mercadolivre-2', name: 'Mercado Livre', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/mercadolivre-1.png' },
-    { id: 'itau-2', name: 'Itaú', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/itau-1.png' },
-    { id: 'ipiranga-2', name: 'Ipiranga', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/ipiranga-1.png' },
-    { id: 'fanta-2', name: 'Fanta', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/fanta-1.png' },
-    { id: 'booking-2', name: 'Booking', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/booking-1.png' },
-    { id: 'bk-2', name: 'Burger King', logo: 'https://cardeal.tv/wp-content/uploads/2025/06/bk-1.png' },
-  ];
-
-  return (
-    <section 
-      ref={sectionRef} 
-      id="brands" 
-      className={`relative min-h-screen w-full flex flex-col items-center justify-center py-20 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
-    >
+  const brands = [{
+    id: 'samsung-1',
+    name: 'Samsung',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/samsung-1.png'
+  }, {
+    id: 'mercadolivre',
+    name: 'Mercado Livre',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/mercadolivre-1.png'
+  }, {
+    id: 'itau',
+    name: 'Itaú',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/itau-1.png'
+  }, {
+    id: 'ipiranga',
+    name: 'Ipiranga',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/ipiranga-1.png'
+  }, {
+    id: 'fanta',
+    name: 'Fanta',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/fanta-1.png'
+  }, {
+    id: 'booking',
+    name: 'Booking',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/booking-1.png'
+  }, {
+    id: 'bk',
+    name: 'Burger King',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/bk-1.png'
+  }, {
+    id: 'samsung-2',
+    name: 'Samsung',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/samsung-1.png'
+  }, {
+    id: 'mercadolivre-2',
+    name: 'Mercado Livre',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/mercadolivre-1.png'
+  }, {
+    id: 'itau-2',
+    name: 'Itaú',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/itau-1.png'
+  }, {
+    id: 'ipiranga-2',
+    name: 'Ipiranga',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/ipiranga-1.png'
+  }, {
+    id: 'fanta-2',
+    name: 'Fanta',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/fanta-1.png'
+  }, {
+    id: 'booking-2',
+    name: 'Booking',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/booking-1.png'
+  }, {
+    id: 'bk-2',
+    name: 'Burger King',
+    logo: 'https://cardeal.tv/wp-content/uploads/2025/06/bk-1.png'
+  }];
+  return <section ref={sectionRef} id="brands" className={`relative min-h-screen w-full flex flex-col items-center justify-center py-20 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}>
       <h2 className="text-3xl md:text-5xl font-montserrat font-black uppercase mb-16 text-center">
         {t('brands.title')}
       </h2>
       
       <div className="mb-6 relative w-full max-w-5xl mx-auto">
-        <div 
-          ref={containerRef} 
-          className="relative w-full mx-auto overflow-hidden"
-          style={{
-            aspectRatio: '16/8',
-            isolation: 'isolate'
-          }}
-        >
+        <div ref={containerRef} className="relative w-full mx-auto overflow-hidden" style={{
+        aspectRatio: '16/8',
+        isolation: 'isolate'
+      }}>
           {/* Fundo amarelo apenas sob a imagem dos olhos */}
-          <div 
-            style={{
-              backgroundColor: '#fffff0',
-              zIndex: 1,
-              width: '70%',
-              left: '15%'
-            }} 
-            className="absolute inset-y-0"
-          />
+          <div style={{
+          backgroundColor: '#fffff0',
+          zIndex: 1,
+          width: '70%',
+          left: '15%'
+        }} className="absolute inset-y-0" />
           
-          {!isBlinking && (
-            <>
-              <img 
-                src="https://cardeal.tv/wp-content/uploads/2025/06/iris.png" 
-                alt="Left Iris" 
-                className="absolute transition-all duration-150 ease-out" 
-                style={{
-                  width: '9%',
-                  aspectRatio: '1/1',
-                  top: `${leftIrisPosition.y}%`,
-                  left: `${30 + (leftIrisPosition.x - 50) * 0.12}%`,
-                  zIndex: 2,
-                  pointerEvents: 'none',
-                  transform: 'translate(-50%, -50%)'
-                }} 
-              />
-              <img 
-                src="https://cardeal.tv/wp-content/uploads/2025/06/iris.png" 
-                alt="Right Iris" 
-                className="absolute transition-all duration-150 ease-out" 
-                style={{
-                  width: '9%',
-                  aspectRatio: '1/1',
-                  top: `${rightIrisPosition.y}%`,
-                  left: `${72 + (rightIrisPosition.x - 50) * 0.12}%`,
-                  zIndex: 2,
-                  pointerEvents: 'none',
-                  transform: 'translate(-50%, -50%)'
-                }} 
-              />
-            </>
-          )}
+          {!isBlinking && <>
+              <img src="https://cardeal.tv/wp-content/uploads/2025/06/iris.png" alt="Left Iris" className="absolute transition-all duration-150 ease-out" style={{
+            width: '9%',
+            aspectRatio: '1/1',
+            top: `${leftIrisPosition.y}%`,
+            left: `${30 + (leftIrisPosition.x - 50) * 0.12}%`,
+            zIndex: 2,
+            pointerEvents: 'none',
+            transform: 'translate(-50%, -50%)'
+          }} />
+              <img src="https://cardeal.tv/wp-content/uploads/2025/06/iris.png" alt="Right Iris" className="absolute transition-all duration-150 ease-out" style={{
+            width: '9%',
+            aspectRatio: '1/1',
+            top: `${rightIrisPosition.y}%`,
+            left: `${72 + (rightIrisPosition.x - 50) * 0.12}%`,
+            zIndex: 2,
+            pointerEvents: 'none',
+            transform: 'translate(-50%, -50%)'
+          }} />
+            </>}
           
-          <img 
-            src={isBlinking 
-              ? "https://cardeal.tv/wp-content/uploads/2025/06/OLHOS_FECHADOS.png" 
-              : "https://cardeal.tv/wp-content/uploads/2025/06/OLHOS_ABERTOS.png"
-            } 
-            alt="Eyes" 
-            className="absolute inset-0 w-full h-full object-contain transition-opacity duration-100" 
-            style={{
-              zIndex: 3,
-              pointerEvents: 'none',
-              objectPosition: 'center'
-            }} 
-          />
+          <img src={isBlinking ? "https://cardeal.tv/wp-content/uploads/2025/06/OLHOS_FECHADOS.png" : "https://cardeal.tv/wp-content/uploads/2025/06/OLHOS_ABERTOS.png"} alt="Eyes" className="absolute inset-0 w-full h-full object-contain transition-opacity duration-100" style={{
+          zIndex: 3,
+          pointerEvents: 'none',
+          objectPosition: 'center'
+        }} />
         </div>
       </div>
 
-      <Logos3 
-        heading=""
-        logos={brands.map(brand => ({
-          id: brand.id,
-          description: brand.name,
-          image: brand.logo,
-          className: "h-20 w-auto"
-        }))}
-      />
-    </section>
-  );
+      <Logos3 heading="" logos={brands.map(brand => ({
+      id: brand.id,
+      description: brand.name,
+      image: brand.logo,
+      className: "h-20 w-auto"
+    }))} className="py-0" />
+    </section>;
 };

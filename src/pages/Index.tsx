@@ -41,7 +41,7 @@ const Index = () => {
             <GallerySection />
             <VideosSection />
             <EnergySection />
-            <BrandsSection />
+            <BrandsSection className="py-[41px]" />
             <ContactSection />
             <FAQSection />
             <FooterSection />
