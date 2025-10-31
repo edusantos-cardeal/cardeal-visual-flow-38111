@@ -42,7 +42,9 @@ const Index = () => {
             </div>
             <GallerySection />
             <VideosSection />
-            <EnergySection />
+            <div className="-mt-24">
+              <EnergySection />
+            </div>
             <BrandsSection />
             <ContactSection />
             <FAQSection />

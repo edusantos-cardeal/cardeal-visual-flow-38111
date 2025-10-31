@@ -61,12 +61,12 @@ export const Sidebar = () => {
       borderRight: `1px solid hsl(var(--border))`
     }}>
         {/* Menu e dot centralizados */}
-        <div className="flex-1 flex flex-col items-center justify-center gap-1 mx-0 py-[4px] px-[5px]">
+        <div className="flex-1 flex flex-col items-center justify-start gap-1 mx-0 py-[4px] px-[5px] mt-16">
           <nav className="flex flex-col gap-1 items-center mx-[9px] py-0">
-            {sections.map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[8px] text-sm px-[4px] py-[3px]`}>
+            {sections.map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[6px] text-sm px-[4px] py-[3px]`}>
                 {section.label}
               </button>)}
-            <button onClick={handleTalentosClick} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[8px] text-sm px-[4px] py-[3px]`}>
+            <button onClick={handleTalentosClick} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[6px] text-sm px-[4px] py-[3px]`}>
               Talentos
             </button>
           </nav>
@@ -83,7 +83,7 @@ export const Sidebar = () => {
           </Dialog>
         </div>
 
-        <button onClick={() => scrollToSection('contact')} className={`w-full bg-foreground text-background hover:opacity-90 [writing-mode:vertical-rl] rotate-180 whitespace-nowrap py-4 px-3 text-[9px] font-bold tracking-wider origin-center mb-2`}>
+        <button onClick={() => scrollToSection('contact')} className={`w-full bg-foreground text-background hover:opacity-90 [writing-mode:vertical-rl] rotate-180 whitespace-nowrap py-3 px-3 text-[9px] font-bold tracking-wider origin-center mb-4`}>
           {t('menu.contact.button')}
         </button>
       </div>

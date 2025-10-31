@@ -12,28 +12,33 @@ export const HeroSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const videoScale = Math.max(0.4, 1 - scrollY / 1000);
-  const textOpacity = Math.min(1, scrollY / 500);
-  const textPosition = Math.max(-100, 100 - scrollY / 5);
+  // Add delay - only start animation after scrolling 100px
+  const effectiveScroll = Math.max(0, scrollY - 100);
+  const videoScale = Math.max(0.4, 1 - effectiveScroll / 1500);
+  const textOpacity = Math.min(1, effectiveScroll / 800);
+  const textPosition = Math.max(-100, 100 - effectiveScroll / 8);
+  const titleOpacity = Math.max(0, 1 - effectiveScroll / 400);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div 
-        className="absolute inset-0 flex items-center justify-center overflow-hidden"
+        className="absolute inset-0 flex items-center justify-center overflow-hidden bg-black"
         style={{
           transform: `scale(${videoScale})`,
-          transition: 'transform 0.1s ease-out',
+          transition: 'transform 0.05s ease-out',
         }}
       >
         <iframe
           src="https://player.vimeo.com/video/991148258?background=1&autoplay=1&loop=1&muted=1&controls=0&t=2s"
-          className="w-full h-full"
+          className="absolute"
           style={{
-            width: '100vw',
+            width: '177.77vh',
             height: '100vh',
             minWidth: '100vw',
-            minHeight: '100vh',
-            objectFit: 'cover',
+            minHeight: '56.25vw',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
             pointerEvents: 'none',
           }}
           frameBorder="0"
@@ -53,14 +58,19 @@ export const HeroSection = () => {
           className="whitespace-nowrap text-[15vw] font-['Times_New_Roman'] tracking-wider"
           style={{
             transform: `translateX(${textPosition}%)`,
-            transition: 'transform 0.1s ease-out',
+            transition: 'transform 0.05s ease-out',
           }}
         >
           CARDEAL TV • POST PRODUCTION HOUSE
         </div>
       </div>
 
-      <div className="relative z-10 text-center">
+      <div 
+        className="relative z-10 text-center transition-opacity duration-300"
+        style={{
+          opacity: titleOpacity,
+        }}
+      >
         <h1 className="text-8xl md:text-9xl font-montserrat font-black uppercase text-foreground drop-shadow-2xl">
           CARDEAL TV
         </h1>
