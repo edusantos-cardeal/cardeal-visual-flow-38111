@@ -57,23 +57,23 @@ export const Sidebar = () => {
       </div>
 
       {/* Sidebar */}
-      <div className={`hidden md:flex fixed left-0 top-0 h-full w-16 flex-col items-center py-6 z-[99] bg-background/80 backdrop-blur-sm`} style={{
+      <div className={`hidden md:flex fixed left-0 top-0 h-full w-16 flex-col items-center py-4 z-[99] bg-background/80 backdrop-blur-sm`} style={{
       borderRight: `1px solid hsl(var(--border))`
     }}>
         {/* Menu e dot centralizados */}
-        <div className="flex-1 flex flex-col items-center justify-start gap-0 mx-0 py-[2px] px-[4px] mt-1">
-          <nav className="flex flex-col gap-0 items-center mx-[6px] py-0">
-            {sections.map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[2px] text-sm px-[3px] py-[2px]`}>
+        <div className="flex-1 flex flex-col items-center justify-center gap-4 mx-0 py-2 px-1 mt-12">
+          <nav className="flex flex-col gap-1 items-center mx-0 py-0">
+            {sections.map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-1 text-sm px-1 py-1`}>
                 {section.label}
               </button>)}
-            <button onClick={handleTalentosClick} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[2px] text-sm px-[3px] py-[2px]`}>
+            <button onClick={handleTalentosClick} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-1 text-sm px-1 py-1`}>
               Talentos
             </button>
           </nav>
 
           <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
             <DialogTrigger asChild>
-              <button onClick={handleVideoClick} className="w-3 h-3 rounded-full bg-primary animate-pulse my-2" />
+              <button onClick={handleVideoClick} className="w-3 h-3 rounded-full bg-primary animate-pulse my-4" />
             </DialogTrigger>
             <DialogContent className="bg-black border-border max-w-4xl">
               <div className="aspect-video bg-black rounded flex items-center justify-center">
@@ -83,7 +83,7 @@ export const Sidebar = () => {
           </Dialog>
         </div>
 
-        <button onClick={() => scrollToSection('contact')} className={`w-full bg-foreground text-background hover:opacity-90 [writing-mode:vertical-rl] rotate-180 whitespace-nowrap py-3 px-3 text-[9px] font-bold tracking-wider origin-center mb-1`}>
+        <button onClick={() => scrollToSection('contact')} className={`w-full bg-foreground text-background hover:opacity-90 [writing-mode:vertical-rl] rotate-180 whitespace-nowrap py-3 px-3 text-[9px] font-bold tracking-wider origin-center mb-2`}>
           {t('menu.contact.button')}
         </button>
       </div>

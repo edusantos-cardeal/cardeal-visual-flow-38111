@@ -43,8 +43,8 @@ export const HeroSection = () => {
   const sectionHeight = vh + TOTAL_SCROLL + Math.round(START_DELAY / 2);
 
   return (
-    <section id="hero" className="relative overflow-hidden" style={{ height: sectionHeight }}>
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative w-full" style={{ height: sectionHeight }}>
+      <div className="sticky top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden bg-black"
           style={{
