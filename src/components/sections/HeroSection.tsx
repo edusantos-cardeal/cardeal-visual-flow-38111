@@ -2,28 +2,51 @@ import { useEffect, useState } from 'react';
 
 export const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [vh, setVh] = useState<number>(typeof window !== 'undefined' ? window.innerHeight : 0);
+  const [vw, setVw] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
+    const handleScroll = () => setScrollY(window.scrollY);
+    const handleResize = () => {
+      setVh(window.innerHeight);
+      setVw(window.innerWidth);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
-  // Add delay - only start animation after scrolling 100px
-  const effectiveScroll = Math.max(0, scrollY - 100);
-  const videoScale = Math.max(0.4, 1 - effectiveScroll / 1500);
-  const textOpacity = Math.min(1, effectiveScroll / 800);
-  const textPosition = Math.max(-100, 100 - effectiveScroll / 8);
-  const titleOpacity = Math.max(0, 1 - effectiveScroll / 400);
+  // Scroll-controlled animation config
+  const START_DELAY = 120; // px before starting effects
+  const PASS_PX = Math.max(500, Math.min(800, Math.round(vw * 0.7))); // per pass
+  const LOOPS = 2; // number of text passes
+  const TOTAL_SCROLL = LOOPS * PASS_PX;
+
+  const raw = scrollY - START_DELAY;
+  const effectiveScroll = Math.max(0, Math.min(TOTAL_SCROLL, raw));
+
+  // Video scales from 1 to 0.4 over the TOTAL_SCROLL
+  const videoScale = Math.max(0.4, 1 - 0.6 * (effectiveScroll / TOTAL_SCROLL));
+
+  // Title fades out as soon as zoom-out starts
+  const titleOpacity = Math.max(0, 1 - Math.min(1, effectiveScroll / 60));
+
+  // Background marquee text opacity and position (right -> left)
+  const textOpacity = Math.min(1, Math.max(0, effectiveScroll / 180));
+  const progressInLoop = (effectiveScroll % PASS_PX) / PASS_PX;
+  const textPosition = 100 - progressInLoop * 200; // 100% to -100%
+
+  // Section height = screen + the scroll budget for two passes (+ small buffer)
+  const sectionHeight = vh + TOTAL_SCROLL + Math.round(START_DELAY / 2);
 
   return (
-    <section id="hero" className="relative h-[250vh] overflow-hidden">
+    <section id="hero" className="relative overflow-hidden" style={{ height: sectionHeight }}>
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         <div 
-          className="absolute inset-0 flex items-center justify-center overflow-hidden bg-black"
+          className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden bg-black"
           style={{
             transform: `scale(${videoScale})`,
             transition: 'transform 0.05s ease-out',
@@ -50,7 +73,7 @@ export const HeroSection = () => {
         </div>
         
         <div 
-          className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none"
+          className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none"
           style={{
             opacity: textOpacity,
           }}
@@ -67,7 +90,7 @@ export const HeroSection = () => {
         </div>
 
         <div 
-          className="relative z-10 text-center transition-opacity duration-300"
+          className="relative z-20 text-center transition-opacity duration-300"
           style={{
             opacity: titleOpacity,
           }}
