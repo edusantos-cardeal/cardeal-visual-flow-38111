@@ -24,7 +24,7 @@ const Index = () => {
       {isLoading && <TVLoadingEffect onComplete={() => setIsLoading(false)} />}
       
       {!isLoading && <div className="relative bg-black text-foreground">
-          <Sidebar className="px-0 py-0" />
+          <Sidebar />
           <DateTime />
           <LanguageSwitcher />
           <FloatingActions />
@@ -33,15 +33,17 @@ const Index = () => {
             <HeroSection />
             <IntroSection />
             <AboutSection />
-            <ServicesSection />
+            <div className="-mt-32">
+              <ServicesSection />
+            </div>
             <div className="relative min-h-screen">
               <ShowcaseSection />
               <MethodSection />
             </div>
             <GallerySection />
             <VideosSection />
-            <EnergySection className="py-0" />
-            <BrandsSection className="py-[41px]" />
+            <EnergySection />
+            <BrandsSection />
             <ContactSection />
             <FAQSection />
             <FooterSection />

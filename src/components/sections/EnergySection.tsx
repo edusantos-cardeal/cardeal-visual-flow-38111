@@ -14,7 +14,7 @@ export const EnergySection = () => {
       </h2>
       <div className="relative flex min-h-[40vh] w-full items-center justify-center mx-0 py-[31px] my-0 px-[9px]">
         <div className="w-[80vw] max-w-4xl flex flex-wrap justify-center gap-4">
-          <p className="font-montserrat uppercase text-center font-thin text-base py-0">
+          <p className="font-inter uppercase text-center font-extralight text-base py-0">
             {t('energy.text')}
           </p>
         </div>
