@@ -21,7 +21,7 @@ export const HeroSection = () => {
 
   // Scroll-controlled animation config
   const START_DELAY = 120; // px before starting effects
-  const PASS_PX = Math.max(500, Math.min(800, Math.round(vw * 0.7))); // per pass
+  const PASS_PX = Math.max(1200, Math.min(1800, Math.round(vw * 1.5))); // per pass - muito mais lento
   const LOOPS = 2; // number of text passes
   const TOTAL_SCROLL = LOOPS * PASS_PX;
 
@@ -30,6 +30,9 @@ export const HeroSection = () => {
 
   // Video scales from 1 to 0.4 over the TOTAL_SCROLL
   const videoScale = Math.max(0.4, 1 - 0.6 * (effectiveScroll / TOTAL_SCROLL));
+  
+  // Video opacity: diminui levemente durante o zoom out (de 1 para 0.7)
+  const videoOpacity = Math.max(0.7, 1 - 0.3 * (effectiveScroll / TOTAL_SCROLL));
 
   // Title fades out as soon as zoom-out starts
   const titleOpacity = Math.max(0, 1 - Math.min(1, effectiveScroll / 60));
@@ -49,7 +52,8 @@ export const HeroSection = () => {
           className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden bg-black"
           style={{
             transform: `scale(${videoScale})`,
-            transition: 'transform 0.05s ease-out',
+            opacity: videoOpacity,
+            transition: 'transform 0.05s ease-out, opacity 0.05s ease-out',
           }}
         >
         <iframe
