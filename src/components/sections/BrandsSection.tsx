@@ -105,7 +105,12 @@ export const BrandsSection = () => {
     name: 'Burger King',
     logo: 'https://cardeal.tv/wp-content/uploads/2025/06/bk-1.png'
   }];
-  return <section ref={sectionRef} id="brands" className={`relative min-h-screen w-full flex flex-col items-center justify-center py-20 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}>
+  return (
+    <section 
+      ref={sectionRef} 
+      id="brands" 
+      className={`relative min-h-screen w-full flex flex-col items-center justify-center py-12 md:py-20 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
+    >
       <h2 className="text-3xl font-montserrat font-black uppercase mb-16 text-center py-0 my-[76px] mx-0 md:text-5xl">
         {t('brands.title')}
       </h2>
@@ -158,5 +163,6 @@ export const BrandsSection = () => {
       image: brand.logo,
       className: "h-20 w-auto"
     }))} className="py-0" />
-    </section>;
+    </section>
+  );
 };

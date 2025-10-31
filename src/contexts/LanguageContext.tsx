@@ -54,6 +54,11 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.phone': 'Telefone',
     'contact.message': 'Mensagem',
     'contact.send': 'Enviar',
+    'contact.sending': 'Enviando...',
+    'contact.success': 'Mensagem enviada!',
+    'contact.successMessage': 'Obrigado pelo contato. Retornaremos em breve.',
+    'contact.error': 'Erro ao enviar',
+    'contact.errorMessage': 'Ocorreu um erro ao enviar sua mensagem. Tente novamente.',
     'contact.download': 'Download Media Kit',
     
     // FAQ
@@ -122,6 +127,11 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.phone': 'Phone',
     'contact.message': 'Message',
     'contact.send': 'Send',
+    'contact.sending': 'Sending...',
+    'contact.success': 'Message sent!',
+    'contact.successMessage': 'Thank you for contacting us. We will get back to you soon.',
+    'contact.error': 'Error sending',
+    'contact.errorMessage': 'An error occurred while sending your message. Please try again.',
     'contact.download': 'Download Media Kit',
     
     // FAQ
@@ -190,6 +200,11 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.phone': 'Teléfono',
     'contact.message': 'Mensaje',
     'contact.send': 'Enviar',
+    'contact.sending': 'Enviando...',
+    'contact.success': '¡Mensaje enviado!',
+    'contact.successMessage': 'Gracias por contactarnos. Te responderemos pronto.',
+    'contact.error': 'Error al enviar',
+    'contact.errorMessage': 'Ocurrió un error al enviar tu mensaje. Inténtalo de nuevo.',
     'contact.download': 'Descargar Media Kit',
     
     // FAQ
@@ -258,6 +273,11 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.phone': 'Téléphone',
     'contact.message': 'Message',
     'contact.send': 'Envoyer',
+    'contact.sending': 'Envoi en cours...',
+    'contact.success': 'Message envoyé!',
+    'contact.successMessage': 'Merci de nous avoir contactés. Nous vous répondrons bientôt.',
+    'contact.error': 'Erreur d\'envoi',
+    'contact.errorMessage': 'Une erreur s\'est produite lors de l\'envoi de votre message. Veuillez réessayer.',
     'contact.download': 'Télécharger le Media Kit',
     
     // FAQ
@@ -326,6 +346,11 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.phone': '电话',
     'contact.message': '留言',
     'contact.send': '发送',
+    'contact.sending': '发送中...',
+    'contact.success': '消息已发送！',
+    'contact.successMessage': '感谢您与我们联系。我们会尽快回复您。',
+    'contact.error': '发送错误',
+    'contact.errorMessage': '发送消息时出错。请重试。',
     'contact.download': '下载媒体资料包',
     
     // FAQ

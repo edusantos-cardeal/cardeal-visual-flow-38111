@@ -30,7 +30,12 @@ export const ServicesSection = () => {
     description: t('services.finishing.desc'),
     imageUrl: 'https://cardeal.tv/wp-content/uploads/2025/06/POS_PRODUCAO.jpg'
   }];
-  return <section ref={ref} id="services" className={`relative min-h-screen flex items-center justify-center py-12 px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}>
+  return (
+    <section 
+      ref={ref} 
+      id="services" 
+      className={`relative min-h-screen flex items-center justify-center py-8 md:py-12 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
+    >
       <div className="max-w-7xl w-full grid md:grid-cols-[300px_1fr] gap-12 items-center mx-[36px]">
         <div className="flex flex-col justify-center">
           <h2 className="text-5xl font-montserrat font-black uppercase mb-4">{t('services.title')}</h2>
@@ -42,5 +47,6 @@ export const ServicesSection = () => {
           <ServiceAccordion services={services} />
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
