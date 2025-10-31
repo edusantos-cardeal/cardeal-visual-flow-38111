@@ -20,14 +20,15 @@ export const HeroSection = () => {
   const titleOpacity = Math.max(0, 1 - effectiveScroll / 400);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div 
-        className="absolute inset-0 flex items-center justify-center overflow-hidden bg-black"
-        style={{
-          transform: `scale(${videoScale})`,
-          transition: 'transform 0.05s ease-out',
-        }}
-      >
+    <section id="hero" className="relative h-[250vh] overflow-hidden">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 flex items-center justify-center overflow-hidden bg-black"
+          style={{
+            transform: `scale(${videoScale})`,
+            transition: 'transform 0.05s ease-out',
+          }}
+        >
         <iframe
           src="https://player.vimeo.com/video/991148258?background=1&autoplay=1&loop=1&muted=1&controls=0&t=2s"
           className="absolute"
@@ -46,37 +47,38 @@ export const HeroSection = () => {
           allowFullScreen
           title="Hero Video"
         />
-      </div>
-      
-      <div 
-        className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none"
-        style={{
-          opacity: textOpacity,
-        }}
-      >
-        <div
-          className="whitespace-nowrap text-[15vw] font-['Times_New_Roman'] tracking-wider"
+        </div>
+        
+        <div 
+          className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none"
           style={{
-            transform: `translateX(${textPosition}%)`,
-            transition: 'transform 0.05s ease-out',
+            opacity: textOpacity,
           }}
         >
-          CARDEAL TV • POST PRODUCTION HOUSE
+          <div
+            className="whitespace-nowrap text-[15vw] font-['Times_New_Roman'] tracking-wider"
+            style={{
+              transform: `translateX(${textPosition}%)`,
+              transition: 'transform 0.05s ease-out',
+            }}
+          >
+            CARDEAL TV • POST PRODUCTION HOUSE
+          </div>
         </div>
-      </div>
 
-      <div 
-        className="relative z-10 text-center transition-opacity duration-300"
-        style={{
-          opacity: titleOpacity,
-        }}
-      >
-        <h1 className="text-8xl md:text-9xl font-montserrat font-black uppercase text-foreground drop-shadow-2xl">
-          CARDEAL TV
-        </h1>
-        <p className="text-2xl md:text-3xl font-inter font-extralight text-foreground mt-4">
-          Post Production House
-        </p>
+        <div 
+          className="relative z-10 text-center transition-opacity duration-300"
+          style={{
+            opacity: titleOpacity,
+          }}
+        >
+          <h1 className="text-8xl md:text-9xl font-montserrat font-black uppercase text-foreground drop-shadow-2xl">
+            CARDEAL TV
+          </h1>
+          <p className="text-2xl md:text-3xl font-inter font-extralight text-foreground mt-4">
+            Post Production House
+          </p>
+        </div>
       </div>
     </section>
   );

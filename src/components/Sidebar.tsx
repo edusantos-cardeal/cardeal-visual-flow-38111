@@ -57,23 +57,23 @@ export const Sidebar = () => {
       </div>
 
       {/* Sidebar */}
-      <div className={`hidden md:flex fixed left-0 top-0 h-full w-16 flex-col items-center py-32 z-[99] bg-background/80 backdrop-blur-sm`} style={{
+      <div className={`hidden md:flex fixed left-0 top-0 h-full w-16 flex-col items-center py-20 z-[99] bg-background/80 backdrop-blur-sm`} style={{
       borderRight: `1px solid hsl(var(--border))`
     }}>
         {/* Menu e dot centralizados */}
-        <div className="flex-1 flex flex-col items-center justify-start gap-1 mx-0 py-[4px] px-[5px] mt-16">
-          <nav className="flex flex-col gap-1 items-center mx-[9px] py-0">
-            {sections.map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[6px] text-sm px-[4px] py-[3px]`}>
+        <div className="flex-1 flex flex-col items-center justify-start gap-1 mx-0 py-[4px] px-[5px] mt-2">
+          <nav className="flex flex-col gap-0.5 items-center mx-[9px] py-0">
+            {sections.map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[3px] text-sm px-[4px] py-[3px]`}>
                 {section.label}
               </button>)}
-            <button onClick={handleTalentosClick} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[6px] text-sm px-[4px] py-[3px]`}>
+            <button onClick={handleTalentosClick} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-[3px] text-sm px-[4px] py-[3px]`}>
               Talentos
             </button>
           </nav>
 
           <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
             <DialogTrigger asChild>
-              <button onClick={handleVideoClick} className="w-3 h-3 rounded-full bg-primary animate-pulse my-20" />
+              <button onClick={handleVideoClick} className="w-3 h-3 rounded-full bg-primary animate-pulse my-8" />
             </DialogTrigger>
             <DialogContent className="bg-black border-border max-w-4xl">
               <div className="aspect-video bg-black rounded flex items-center justify-center">
