@@ -28,7 +28,7 @@ export const StickyScrollGallery = ({ videos }: StickyScrollGalleryProps) => {
     <>
       <ReactLenis root>
         <div className="w-full overflow-hidden">
-          <div className="grid md:grid-cols-12 grid-cols-1 gap-2">
+        <div className="grid grid-cols-3 md:grid-cols-12 gap-2">
             {/* Coluna 1 - Scroll normal */}
             <div className="grid gap-2 md:col-span-4 col-span-1">
               {column1.map((video) => (
@@ -42,8 +42,8 @@ export const StickyScrollGallery = ({ videos }: StickyScrollGalleryProps) => {
               ))}
             </div>
 
-            {/* Coluna 2 - Sticky (apenas desktop) */}
-            <div className="md:sticky md:top-0 md:h-screen w-full md:col-span-4 col-span-1 gap-2 md:grid md:grid-rows-3 hidden md:block">
+            {/* Coluna 2 - Sticky em todas as telas */}
+            <div className="sticky top-0 h-screen w-full col-span-1 md:col-span-4 gap-2 grid grid-rows-3">
               {column2.map((video) => (
                 <figure key={video.id} className="w-full h-full" onClick={() => setSelectedVideo(getVimeoId(video.thumbnail))}>
                   <img
@@ -55,18 +55,6 @@ export const StickyScrollGallery = ({ videos }: StickyScrollGalleryProps) => {
               ))}
             </div>
 
-            {/* Coluna 2 versão mobile */}
-            <div className="grid gap-2 md:hidden col-span-1">
-              {column2.map((video) => (
-                <figure key={video.id} className="w-full" onClick={() => setSelectedVideo(getVimeoId(video.thumbnail))}>
-                  <img
-                    src={video.thumbnail}
-                    alt={`Video ${video.id}`}
-                    className="transition-all duration-300 w-full h-60 align-bottom object-cover rounded-md cursor-pointer hover:opacity-80"
-                  />
-                </figure>
-              ))}
-            </div>
 
             {/* Coluna 3 - Scroll normal */}
             <div className="grid gap-2 md:col-span-4 col-span-1">
