@@ -5,7 +5,7 @@ export const VideosSection = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  return <section className="relative min-h-[80vh] md:min-h-screen flex items-center py-12 px-4 md:px-8">
+  return <section className="relative min-h-[80vh] md:min-h-screen flex items-center py-12 px-4 md:px-8 md:pl-24">
       <div className="max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full mx-auto">
         {/* Coluna 1 - Texto */}
         <div className="space-y-6 text-center md:text-left">

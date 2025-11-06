@@ -34,7 +34,7 @@ export const ServicesSection = () => {
     <section 
       ref={ref} 
       id="services" 
-      className={`relative min-h-[80vh] md:min-h-screen flex items-center justify-center py-8 md:py-12 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
+      className={`relative min-h-[80vh] md:min-h-screen flex items-center justify-center py-8 md:py-12 px-4 md:px-8 md:pl-24 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
     >
       <div className="max-w-7xl w-full grid md:grid-cols-[300px_1fr] gap-8 md:gap-12 items-center px-4 mx-auto">
         <div className="flex flex-col justify-center text-center md:text-left">
