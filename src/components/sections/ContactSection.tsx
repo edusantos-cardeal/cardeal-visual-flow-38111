@@ -6,6 +6,7 @@ import { Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 export const ContactSection = () => {
   const { t } = useLanguage();
@@ -36,24 +37,19 @@ export const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://portfolio-creativehub.lovable.app/leads', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+      const { data, error } = await supabase.functions.invoke('forward-lead', {
+        body: {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
-          source: 'Cardeal TV'
-        })
+          source: 'Cardeal TV',
+        },
       });
 
-      if (!response.ok) {
-        const errorData = await response.text();
-        console.error('Erro na resposta:', errorData);
-        throw new Error(`Erro ${response.status}: ${errorData}`);
+      if (error) {
+        console.error('Erro na função forward-lead:', error);
+        throw new Error(error.message || 'Erro ao enviar formulário');
       }
 
       toast({
