@@ -17,7 +17,7 @@ export const StickyScrollGallery = ({ videos }: StickyScrollGalleryProps) => {
 
   return (
     <ReactLenis root>
-      <div className="w-full px-4 md:px-0">
+      <div className="w-full px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
           {/* Coluna 1 - Scroll normal */}
           <div className="grid gap-4 md:col-span-4">
@@ -26,14 +26,14 @@ export const StickyScrollGallery = ({ videos }: StickyScrollGalleryProps) => {
                 <img
                   src={video.thumbnail}
                   alt={`Video ${video.id}`}
-                  className="transition-all duration-300 w-full h-[400px] md:h-96 align-bottom object-cover rounded-md cursor-pointer hover:opacity-80"
+                  className="transition-all duration-300 w-full h-96 align-bottom object-cover rounded-md cursor-pointer hover:opacity-80"
                   loading="lazy"
                 />
               </figure>
             ))}
           </div>
 
-          {/* Coluna 2 - Sticky */}
+          {/* Coluna 2 - Sticky (fica fixa enquanto outras rolam) */}
           <div className="md:col-span-4">
             <div className="sticky top-0 h-screen grid grid-rows-3 gap-4">
               {column2.map((video) => (
@@ -56,7 +56,7 @@ export const StickyScrollGallery = ({ videos }: StickyScrollGalleryProps) => {
                 <img
                   src={video.thumbnail}
                   alt={`Video ${video.id}`}
-                  className="transition-all duration-300 w-full h-[400px] md:h-96 align-bottom object-cover rounded-md cursor-pointer hover:opacity-80"
+                  className="transition-all duration-300 w-full h-96 align-bottom object-cover rounded-md cursor-pointer hover:opacity-80"
                   loading="lazy"
                 />
               </figure>
