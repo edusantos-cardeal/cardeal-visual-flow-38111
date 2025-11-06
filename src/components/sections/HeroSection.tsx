@@ -21,7 +21,7 @@ export const HeroSection = () => {
 
   // Scroll-controlled animation config
   const START_DELAY = 120; // px before starting effects
-  const PASS_PX = Math.max(1200, Math.min(1800, Math.round(vw * 1.5))); // per pass - muito mais lento
+  const PASS_PX = Math.max(2400, Math.min(3600, Math.round(vw * 2.5))); // per pass - bem mais lento
   const LOOPS = 2; // number of text passes
   const TOTAL_SCROLL = LOOPS * PASS_PX;
 
