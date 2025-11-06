@@ -45,9 +45,21 @@ serve(async (req: Request): Promise<Response> => {
     }
 
     // Forward to external endpoint
+    const portfolioApiKey = Deno.env.get('PORTFOLIO_API_KEY');
+    if (!portfolioApiKey) {
+      console.error('PORTFOLIO_API_KEY not configured');
+      return new Response(
+        JSON.stringify({ error: 'API key not configured' }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     const upstream = await fetch("https://portfolio-creativehub.lovable.app/leads", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${portfolioApiKey}`
+      },
       body: JSON.stringify({ name, email, phone, message, source }),
     });
 
