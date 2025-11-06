@@ -38,7 +38,7 @@ export const AboutSection = () => {
       id="about" 
       className={`relative min-h-screen flex items-center py-8 md:py-12 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center w-full gap-12">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center w-full gap-12 px-4">
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <div 
             ref={containerRef}

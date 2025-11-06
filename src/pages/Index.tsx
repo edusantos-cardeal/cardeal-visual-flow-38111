@@ -23,13 +23,13 @@ const Index = () => {
   return <LanguageProvider>
       {isLoading && <TVLoadingEffect onComplete={() => setIsLoading(false)} />}
       
-      {!isLoading && <div className="relative bg-black text-foreground">
+      {!isLoading && <div className="relative bg-black text-foreground overflow-x-hidden">
           <Sidebar />
           <DateTime />
           <LanguageSwitcher />
           <FloatingActions />
           
-          <main className="relative">
+          <main className="relative overflow-x-hidden">
             <HeroSection />
             <IntroSection />
             <AboutSection />
