@@ -23,7 +23,7 @@ const Index = () => {
   return <LanguageProvider>
       {isLoading && <TVLoadingEffect onComplete={() => setIsLoading(false)} />}
       
-      {!isLoading && <div className="relative bg-black text-foreground overflow-x-hidden">
+      {!isLoading && <div className="relative bg-black text-foreground">
           <Sidebar />
           <DateTime />
           <LanguageSwitcher />

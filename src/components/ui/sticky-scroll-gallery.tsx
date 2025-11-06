@@ -27,7 +27,7 @@ export const StickyScrollGallery = ({ videos }: StickyScrollGalleryProps) => {
   return (
     <>
       <ReactLenis root>
-        <div className="w-full overflow-hidden">
+        <div className="w-full">
         <div className="grid grid-cols-3 md:grid-cols-12 gap-2">
             {/* Coluna 1 - Scroll normal */}
             <div className="grid gap-2 md:col-span-4 col-span-1">
