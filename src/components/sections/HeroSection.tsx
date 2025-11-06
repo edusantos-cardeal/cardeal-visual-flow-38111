@@ -20,12 +20,12 @@ export const HeroSection = () => {
   }, []);
 
   // Scroll-controlled animation config
-   const START_DELAY = 120; // px before starting effects
-   const isMobile = vw < 768;
-   const PASS_PX = isMobile
-     ? Math.max(800, Math.min(1400, Math.round(vw * 1.2)))
-     : Math.max(2400, Math.min(3600, Math.round(vw * 2.5))); // per pass - bem mais lento
-   const LOOPS = 2; // number of text passes
+  const isMobile = vw < 768;
+  const START_DELAY = isMobile ? 60 : 120; // px before starting effects
+  const PASS_PX = isMobile
+    ? Math.max(350, Math.min(600, Math.round(vw * 0.9)))
+    : Math.max(2200, Math.min(3000, Math.round(vw * 2.2))); // per pass - mais suave
+  const LOOPS = 2; // number of text passes
   const TOTAL_SCROLL = LOOPS * PASS_PX;
 
   const raw = scrollY - START_DELAY;
