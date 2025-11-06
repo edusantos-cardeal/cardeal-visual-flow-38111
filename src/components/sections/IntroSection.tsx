@@ -6,10 +6,10 @@ export const IntroSection = () => {
   return (
     <section 
       ref={ref}
-      className={`relative py-20 md:py-32 px-4 md:px-8 bg-white transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
+      className={`relative py-12 md:py-32 px-4 md:px-8 bg-white transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
     >
       <div className="max-w-4xl mx-auto text-center">
-        <p className="text-xl md:text-2xl lg:text-3xl text-black font-inter">
+        <p className="text-lg md:text-2xl lg:text-3xl text-black font-inter px-2">
           <span className="font-bold">Cardeal TV</span>, uma casa de pós-produção que ama trazer vida para nossos projetos.
         </p>
       </div>
