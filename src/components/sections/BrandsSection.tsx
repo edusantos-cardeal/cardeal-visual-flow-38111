@@ -111,7 +111,7 @@ export const BrandsSection = () => {
       id="brands" 
       className={`relative min-h-screen w-full flex flex-col items-center justify-center py-12 md:py-20 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
     >
-      <h2 className="text-3xl font-montserrat font-black uppercase mb-16 text-center py-0 my-[76px] mx-0 md:text-5xl">
+      <h2 className="text-2xl sm:text-3xl md:text-5xl font-montserrat font-black uppercase mb-16 text-center py-0 my-[76px] mx-0 px-4">
         {t('brands.title')}
       </h2>
       

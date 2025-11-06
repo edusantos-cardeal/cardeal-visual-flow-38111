@@ -86,11 +86,11 @@ export const AboutSection = () => {
           </div>
         </div>
         
-        <div className="w-full md:w-1/2 space-y-6 md:pl-16">
-          <h2 className="text-4xl font-montserrat font-black uppercase tracking-tight">
+        <div className="w-full md:w-1/2 space-y-6 md:pl-16 text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-black uppercase tracking-tight">
             {t('about.title')}
           </h2>
-          <div className="space-y-4 text-lg text-foreground/80 font-inter font-extralight">
+          <div className="space-y-4 text-base md:text-lg text-foreground/80 font-inter font-extralight">
             <p>{t('about.p1')}</p>
             <p>{t('about.p2')}</p>
             <p>{t('about.p3')}</p>
