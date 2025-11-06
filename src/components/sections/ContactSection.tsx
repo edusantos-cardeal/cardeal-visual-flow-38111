@@ -20,29 +20,35 @@ export const ContactSection = () => {
     message: ''
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://portfolio-creativehub.lovable.app/leads', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          source: 'Cardeal TV'
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Erro ao enviar formulário');
+      // Validar campos obrigatórios
+      if (!formData.name || !formData.email || !formData.message) {
+        toast({
+          title: 'Campos obrigatórios',
+          description: 'Por favor, preencha nome, email e mensagem.',
+          variant: 'destructive',
+        });
+        setIsSubmitting(false);
+        return;
       }
+
+      // Criar mensagem para WhatsApp
+      const whatsappMessage = `*Nova mensagem do site Cardeal TV*%0A%0A*Nome:* ${encodeURIComponent(formData.name)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*Telefone:* ${encodeURIComponent(formData.phone || 'Não informado')}%0A*Mensagem:* ${encodeURIComponent(formData.message)}`;
+      
+      // Número de WhatsApp da Cardeal TV (substituir pelo número real)
+      const whatsappNumber = '5511999999999'; // Atualizar com o número correto
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+      // Abrir WhatsApp
+      window.open(whatsappUrl, '_blank');
 
       toast({
         title: t('contact.success'),
-        description: t('contact.successMessage'),
+        description: 'Redirecionando para WhatsApp...',
       });
 
       // Limpar formulário
