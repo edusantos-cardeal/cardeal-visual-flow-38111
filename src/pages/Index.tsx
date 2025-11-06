@@ -33,18 +33,14 @@ const Index = () => {
             <HeroSection />
             <IntroSection />
             <AboutSection />
-            <div className="-mt-8 md:-mt-32">
-              <ServicesSection />
-            </div>
+            <ServicesSection />
             <div className="relative min-h-screen">
               <ShowcaseSection />
               <MethodSection />
             </div>
             <GallerySection />
             <VideosSection />
-            <div className="-mt-8 md:-mt-24">
-              <EnergySection />
-            </div>
+            <EnergySection />
             <BrandsSection />
             <ContactSection />
             <FAQSection />

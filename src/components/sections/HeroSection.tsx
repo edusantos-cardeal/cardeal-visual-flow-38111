@@ -20,9 +20,12 @@ export const HeroSection = () => {
   }, []);
 
   // Scroll-controlled animation config
-  const START_DELAY = 120; // px before starting effects
-  const PASS_PX = Math.max(2400, Math.min(3600, Math.round(vw * 2.5))); // per pass - bem mais lento
-  const LOOPS = 2; // number of text passes
+   const START_DELAY = 120; // px before starting effects
+   const isMobile = vw < 768;
+   const PASS_PX = isMobile
+     ? Math.max(800, Math.min(1400, Math.round(vw * 1.2)))
+     : Math.max(2400, Math.min(3600, Math.round(vw * 2.5))); // per pass - bem mais lento
+   const LOOPS = 2; // number of text passes
   const TOTAL_SCROLL = LOOPS * PASS_PX;
 
   const raw = scrollY - START_DELAY;
@@ -43,7 +46,7 @@ export const HeroSection = () => {
   const textPosition = 100 - progressInLoop * 200; // 100% to -100%
 
   // Section height = screen + the scroll budget for two passes (+ small buffer)
-  const sectionHeight = vh + TOTAL_SCROLL + Math.round(START_DELAY / 2);
+  const sectionHeight = vh + TOTAL_SCROLL + (isMobile ? 40 : Math.round(START_DELAY / 2));
 
   return (
     <section id="hero" className="relative w-full overflow-hidden" style={{ height: sectionHeight }}>
