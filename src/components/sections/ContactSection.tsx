@@ -66,7 +66,7 @@ export const ContactSection = () => {
     <section 
       ref={ref} 
       id="contact" 
-      className={`relative min-h-screen flex items-center py-12 md:py-20 px-4 md:px-8 md:pl-24 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
+      className={`relative min-h-screen flex items-center py-12 md:py-20 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
     >
       <div className="max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-[60%_40%] gap-8 md:gap-12 items-center">
         {/* Coluna 1 - Formulário */}

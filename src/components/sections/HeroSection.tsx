@@ -20,12 +20,9 @@ export const HeroSection = () => {
   }, []);
 
   // Scroll-controlled animation config
-  const isMobile = vw < 768;
-  const START_DELAY = isMobile ? 60 : 100; // px before starting effects
-  const PASS_PX = isMobile
-    ? Math.max(350, Math.min(600, Math.round(vw * 0.9)))
-    : Math.max(900, Math.min(1400, Math.round(vh * 1.1))); // desktop moderado, mantém efeito
-  const LOOPS = 2; // duas passagens em todos os dispositivos
+  const START_DELAY = 120; // px before starting effects
+  const PASS_PX = Math.max(2400, Math.min(3600, Math.round(vw * 2.5))); // per pass - bem mais lento
+  const LOOPS = 2; // number of text passes
   const TOTAL_SCROLL = LOOPS * PASS_PX;
 
   const raw = scrollY - START_DELAY;
@@ -46,10 +43,10 @@ export const HeroSection = () => {
   const textPosition = 100 - progressInLoop * 200; // 100% to -100%
 
   // Section height = screen + the scroll budget for two passes (+ small buffer)
-  const sectionHeight = vh + TOTAL_SCROLL + (isMobile ? 40 : Math.round(START_DELAY / 2));
+  const sectionHeight = vh + TOTAL_SCROLL + Math.round(START_DELAY / 2);
 
   return (
-    <section id="hero" className="relative w-full overflow-hidden" style={{ height: sectionHeight }}>
+    <section id="hero" className="relative w-full" style={{ height: sectionHeight }}>
       <div className="sticky top-0 left-0 w-full h-screen flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden bg-black"
@@ -86,7 +83,7 @@ export const HeroSection = () => {
           }}
         >
           <div
-            className="whitespace-nowrap text-[20vw] sm:text-[15vw] font-['Times_New_Roman'] tracking-wider"
+            className="whitespace-nowrap text-[15vw] font-['Times_New_Roman'] tracking-wider"
             style={{
               transform: `translateX(${textPosition}%)`,
               transition: 'transform 0.05s ease-out',
@@ -97,15 +94,15 @@ export const HeroSection = () => {
         </div>
 
         <div 
-          className="relative z-20 text-center transition-opacity duration-300 px-4"
+          className="relative z-20 text-center transition-opacity duration-300"
           style={{
             opacity: titleOpacity,
           }}
         >
-          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-montserrat font-black uppercase text-foreground drop-shadow-2xl">
+          <h1 className="text-8xl md:text-9xl font-montserrat font-black uppercase text-foreground drop-shadow-2xl">
             CARDEAL TV
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-inter font-extralight text-foreground mt-4">
+          <p className="text-2xl md:text-3xl font-inter font-extralight text-foreground mt-4">
             Post Production House
           </p>
         </div>

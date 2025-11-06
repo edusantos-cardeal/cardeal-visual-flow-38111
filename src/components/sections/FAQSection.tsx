@@ -33,9 +33,9 @@ export const FAQSection = () => {
   return (
     <section 
       ref={ref}
-      className={`relative min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center py-12 md:py-20 px-4 md:px-8 md:pl-24 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
+      className={`relative min-h-screen flex flex-col items-center justify-center py-12 md:py-20 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
     >
-      <div className="max-w-3xl w-full px-4">
+      <div className="max-w-3xl w-full">
         <Accordion type="single" collapsible className="w-full space-y-4">
           {faqs.map((faq, index) => (
             <AccordionItem 

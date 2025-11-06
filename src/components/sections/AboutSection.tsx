@@ -36,9 +36,9 @@ export const AboutSection = () => {
     <section 
       ref={sectionRef}
       id="about" 
-      className={`relative min-h-[80vh] md:min-h-screen flex items-center py-8 md:py-12 px-4 md:px-8 md:pl-24 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
+      className={`relative min-h-screen flex items-center py-8 md:py-12 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center w-full gap-12 px-4">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center w-full gap-12">
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <div 
             ref={containerRef}
@@ -86,11 +86,11 @@ export const AboutSection = () => {
           </div>
         </div>
         
-        <div className="w-full md:w-1/2 space-y-6 md:pl-16 text-center md:text-left">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-montserrat font-black uppercase tracking-tight">
+        <div className="w-full md:w-1/2 space-y-6 md:pl-16">
+          <h2 className="text-4xl font-montserrat font-black uppercase tracking-tight">
             {t('about.title')}
           </h2>
-          <div className="space-y-4 text-base md:text-lg text-foreground/80 font-inter font-extralight">
+          <div className="space-y-4 text-lg text-foreground/80 font-inter font-extralight">
             <p>{t('about.p1')}</p>
             <p>{t('about.p2')}</p>
             <p>{t('about.p3')}</p>
