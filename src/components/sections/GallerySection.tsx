@@ -39,7 +39,7 @@ export const GallerySection = () => {
       id="gallery" 
       className={`relative min-h-screen flex flex-col items-center justify-center py-12 md:py-20 px-4 md:px-8 transition-all duration-700 ${isVisible ? 'animate-zoom-in' : 'opacity-0'}`}
     >
-      <h2 className="font-montserrat font-black uppercase mb-12 my-[17px] py-[32px] text-6xl">NOSSOS TRABALHOS</h2>
+      <h2 className="font-montserrat font-black uppercase mb-8 md:mb-12 my-2 md:my-[17px] py-4 md:py-[32px] text-3xl md:text-6xl text-center px-2">NOSSOS TRABALHOS</h2>
       
       <StickyScrollGallery videos={videos} />
     </section>

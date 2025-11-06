@@ -83,7 +83,7 @@ export const HeroSection = () => {
           }}
         >
           <div
-            className="whitespace-nowrap text-[15vw] font-['Times_New_Roman'] tracking-wider"
+            className="whitespace-nowrap text-[10vw] md:text-[15vw] font-['Times_New_Roman'] tracking-wider"
             style={{
               transform: `translateX(${textPosition}%)`,
               transition: 'transform 0.05s ease-out',
@@ -94,15 +94,15 @@ export const HeroSection = () => {
         </div>
 
         <div 
-          className="relative z-20 text-center transition-opacity duration-300"
+          className="relative z-20 text-center transition-opacity duration-300 px-4"
           style={{
             opacity: titleOpacity,
           }}
         >
-          <h1 className="text-8xl md:text-9xl font-montserrat font-black uppercase text-foreground drop-shadow-2xl">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-montserrat font-black uppercase text-foreground drop-shadow-2xl">
             CARDEAL TV
           </h1>
-          <p className="text-2xl md:text-3xl font-inter font-extralight text-foreground mt-4">
+          <p className="text-xl md:text-2xl lg:text-3xl font-inter font-extralight text-foreground mt-4">
             Post Production House
           </p>
         </div>
