@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.80.0';
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -44,37 +45,48 @@ serve(async (req: Request): Promise<Response> => {
       );
     }
 
-    // Forward to external endpoint
-    const portfolioApiKey = Deno.env.get('PORTFOLIO_API_KEY');
-    if (!portfolioApiKey) {
-      console.error('PORTFOLIO_API_KEY not configured');
+    // Get Portfolio Supabase credentials
+    const portfolioUrl = Deno.env.get('PORTFOLIO_SUPABASE_URL');
+    const portfolioServiceKey = Deno.env.get('PORTFOLIO_SERVICE_ROLE_KEY');
+    
+    if (!portfolioUrl || !portfolioServiceKey) {
+      console.error('Portfolio Supabase credentials not configured');
       return new Response(
-        JSON.stringify({ error: 'API key not configured' }),
+        JSON.stringify({ error: 'Backend configuration missing' }),
         { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
-    const upstream = await fetch("https://portfolio-creativehub.lovable.app/leads", {
-      method: "POST",
-      headers: { 
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${portfolioApiKey}`
-      },
-      body: JSON.stringify({ name, email, phone, message, source }),
-    });
+    // Create Supabase client for the portfolio project
+    const portfolioSupabase = createClient(portfolioUrl, portfolioServiceKey);
 
-    const text = await upstream.text();
-    let json: any = null;
-    try {
-      json = JSON.parse(text);
-    } catch {
-      json = { raw: text };
+    // Insert lead directly into portfolio database
+    const { data, error } = await portfolioSupabase
+      .from('leads')
+      .insert({
+        name,
+        email,
+        phone: phone || null,
+        message,
+        source
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error inserting lead:', error);
+      return new Response(
+        JSON.stringify({ error: 'Failed to save lead', details: error.message }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
-    return new Response(JSON.stringify(json), {
-      status: upstream.status,
-      headers: { "Content-Type": "application/json", ...corsHeaders },
-    });
+    console.log('Lead saved successfully:', data);
+
+    return new Response(
+      JSON.stringify({ success: true, data }),
+      { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
+    );
   } catch (error: any) {
     console.error("forward-lead error:", error?.message || error);
     return new Response(
