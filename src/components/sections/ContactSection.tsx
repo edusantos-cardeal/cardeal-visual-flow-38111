@@ -20,35 +20,45 @@ export const ContactSection = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validar campos obrigatórios
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: 'Campos obrigatórios',
+        description: 'Por favor, preencha nome, email e mensagem.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Validar campos obrigatórios
-      if (!formData.name || !formData.email || !formData.message) {
-        toast({
-          title: 'Campos obrigatórios',
-          description: 'Por favor, preencha nome, email e mensagem.',
-          variant: 'destructive',
-        });
-        setIsSubmitting(false);
-        return;
+      const response = await fetch('https://portfolio-creativehub.lovable.app/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          source: 'Cardeal TV'
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error('Erro na resposta:', errorData);
+        throw new Error(`Erro ${response.status}: ${errorData}`);
       }
-
-      // Criar mensagem para WhatsApp
-      const whatsappMessage = `*Nova mensagem do site Cardeal TV*%0A%0A*Nome:* ${encodeURIComponent(formData.name)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*Telefone:* ${encodeURIComponent(formData.phone || 'Não informado')}%0A*Mensagem:* ${encodeURIComponent(formData.message)}`;
-      
-      // Número de WhatsApp da Cardeal TV (substituir pelo número real)
-      const whatsappNumber = '5511999999999'; // Atualizar com o número correto
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-
-      // Abrir WhatsApp
-      window.open(whatsappUrl, '_blank');
 
       toast({
         title: t('contact.success'),
-        description: 'Redirecionando para WhatsApp...',
+        description: t('contact.successMessage'),
       });
 
       // Limpar formulário
@@ -59,6 +69,7 @@ export const ContactSection = () => {
         message: ''
       });
     } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
       toast({
         title: t('contact.error'),
         description: t('contact.errorMessage'),
