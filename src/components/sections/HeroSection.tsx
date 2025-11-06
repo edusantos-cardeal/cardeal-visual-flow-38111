@@ -24,7 +24,7 @@ export const HeroSection = () => {
   const START_DELAY = isMobile ? 60 : 100; // px before starting effects
   const PASS_PX = isMobile
     ? Math.max(350, Math.min(600, Math.round(vw * 0.9)))
-    : Math.max(800, Math.min(1200, Math.round(vw * 0.7))); // desktop reduzido
+    : Math.max(1400, Math.min(2000, Math.round(vw * 1.2))); // desktop com efeito mais suave
   const LOOPS = 2; // number of text passes
   const TOTAL_SCROLL = LOOPS * PASS_PX;
 
