@@ -21,10 +21,10 @@ export const HeroSection = () => {
 
   // Scroll-controlled animation config
   const isMobile = vw < 768;
-  const START_DELAY = isMobile ? 60 : 120; // px before starting effects
+  const START_DELAY = isMobile ? 60 : 100; // px before starting effects
   const PASS_PX = isMobile
     ? Math.max(350, Math.min(600, Math.round(vw * 0.9)))
-    : Math.max(2400, Math.min(3600, Math.round(vw * 2.5))); // desktop mantém original
+    : Math.max(800, Math.min(1200, Math.round(vw * 0.7))); // desktop reduzido
   const LOOPS = 2; // number of text passes
   const TOTAL_SCROLL = LOOPS * PASS_PX;
 
