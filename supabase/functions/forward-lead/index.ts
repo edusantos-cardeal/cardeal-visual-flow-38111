@@ -60,31 +60,54 @@ serve(async (req: Request): Promise<Response> => {
     // Create Supabase client for the portfolio project
     const portfolioSupabase = createClient(portfolioUrl, portfolioServiceKey);
 
-    // Insert lead directly into portfolio database
-    const { data, error } = await portfolioSupabase
-      .from('leads')
-      .insert({
-        name,
-        email,
-        phone: phone || null,
-        message,
-        source
-      })
-      .select()
-      .single();
+    // Insert lead directly into portfolio database with a safe fallback
+    let saved: any = null;
+    try {
+      const payload: Record<string, any> = { name, email, message, source };
+      if (phone) payload.phone = phone;
 
-    if (error) {
-      console.error('Error inserting lead:', error);
-      return new Response(
-        JSON.stringify({ error: 'Failed to save lead', details: error.message }),
-        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
+      const { data, error } = await portfolioSupabase
+        .from('leads')
+        .insert(payload)
+        .select()
+        .single();
+
+      if (error) throw error;
+      saved = data;
+    } catch (err: any) {
+      const msg = err?.message || '';
+      const code = err?.code || '';
+
+      // If the target DB doesn't have the 'phone' column, retry without it
+      if (msg.includes("'phone' column") || msg.toLowerCase().includes('phone') || code === 'PGRST204') {
+        console.warn("Schema mismatch detected. Retrying insert without 'phone' column.");
+        const { data, error } = await portfolioSupabase
+          .from('leads')
+          .insert({ name, email, message, source })
+          .select()
+          .single();
+
+        if (error) {
+          console.error('Error inserting lead (retry without phone):', error);
+          return new Response(
+            JSON.stringify({ error: 'Failed to save lead', details: error.message }),
+            { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+          );
+        }
+        saved = data;
+      } else {
+        console.error('Error inserting lead:', err);
+        return new Response(
+          JSON.stringify({ error: 'Failed to save lead', details: msg }),
+          { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        );
+      }
     }
 
-    console.log('Lead saved successfully:', data);
+    console.log('Lead saved successfully:', saved);
 
     return new Response(
-      JSON.stringify({ success: true, data }),
+      JSON.stringify({ success: true, data: saved }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: any) {
