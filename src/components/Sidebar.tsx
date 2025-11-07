@@ -79,6 +79,10 @@ export const Sidebar = () => {
             </DialogContent>
           </Dialog>
         </div>
+
+        <button onClick={() => scrollToSection('contact')} className={`w-full bg-foreground text-background hover:opacity-90 [writing-mode:vertical-rl] rotate-180 whitespace-nowrap py-3 px-3 text-[9px] font-bold tracking-wider origin-center mb-2`}>
+          {t('menu.contact.button')}
+        </button>
       </div>
     </>;
 };
