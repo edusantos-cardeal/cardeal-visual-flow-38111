@@ -26,9 +26,6 @@ export const Sidebar = () => {
     label: t('menu.brands')
   }];
 
-  const handleTalentosClick = () => {
-    window.open('https://cardeal.tv/talents/', '_blank');
-  };
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({
@@ -63,9 +60,9 @@ export const Sidebar = () => {
             {sections.map(section => <button key={section.id} onClick={() => scrollToSection(section.id)} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-1 text-sm px-1 py-1`}>
                 {section.label}
               </button>)}
-            <button onClick={handleTalentosClick} className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-1 text-sm px-1 py-1`}>
+            <a href="https://cardeal.tv/talents/" target="_blank" rel="noopener noreferrer" className={`text-foreground hover:text-primary [writing-mode:vertical-rl] rotate-180 mx-0 my-1 text-sm px-1 py-1`}>
               Talentos
-            </button>
+            </a>
           </nav>
 
           <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
