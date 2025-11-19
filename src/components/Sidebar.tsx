@@ -27,7 +27,7 @@ export const Sidebar = () => {
   }];
 
   const handleTalentosClick = () => {
-    window.open('https://talent-arena-showcase-61.lovable.app/', '_blank');
+    window.open('https://cardeal.tv/talents/', '_blank');
   };
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
