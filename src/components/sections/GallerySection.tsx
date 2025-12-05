@@ -16,7 +16,7 @@ export const GallerySection = () => {
     thumbnail: 'https://vumbnail.com/991212776.jpg'
   }, {
     id: '4',
-    thumbnail: 'https://vumbnail.com/980012835.jpg'
+    thumbnail: 'https://vumbnail.com/980014288.jpg'
   }, {
     id: '5',
     thumbnail: 'https://vumbnail.com/991148258.jpg'
